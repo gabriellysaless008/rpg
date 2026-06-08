@@ -1,7 +1,7 @@
-/* Configuração Geral - Fundo estilo Taverna/Fantasia */
+
 body {
-    background-color: #1a120b; /* Marrom bem escuro */
-    color: #f5ebe0; /* Texto claro, tom de pergaminho */
+    background-color: #1a120b;
+    color: #f5ebe0;
     font-family: 'Georgia', serif;
     display: flex;
     flex-direction: column;
@@ -13,12 +13,11 @@ body {
     box-sizing: border-box;
 }
 
-/* Container invisível para organizar os botões em linha */
+
 br {
-    display: none; /* Remove as quebras de linha padrão para alinhar melhor */
+    display: none;
 }
 
-/* Botão Principal: Abrir Mochila */
 #gerenciarMochila {
     background: radial-gradient(circle, #8b5a2b 0%, #4a2c11 100%);
     color: #fff;
@@ -28,7 +27,7 @@ br {
     letter-spacing: 2px;
     padding: 15px 40px;
     margin-bottom: 30px;
-    border: 3px solid #d4af37; /* Borda dourada */
+    border: 3px solid #d4af37;
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
@@ -41,10 +40,9 @@ br {
     background: radial-gradient(circle, #a06b3e 0%, #5c3a1a 100%);
 }
 
-/* Botões de Ação (Cadastrar, Consultar, Alterar, Deletar) */
 button:not(#gerenciarMochila) {
-    background-color: #3e2723; /* Marrom madeira */
-    color: #e0a96d; /* Laranja/Dourado apagado */
+    background-color: #3e2723;
+    color: #e0a96d;
     font-size: 1.1rem;
     font-family: 'Georgia', serif;
     padding: 12px 24px;
@@ -60,12 +58,12 @@ button:not(#gerenciarMochila) {
 button:not(#gerenciarMochila):hover {
     background-color: #5d4037;
     color: #fff;
-    border-color: #d4af37; /* Brilho dourado ao passar o mouse */
+    border-color: #d4af37;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
 }
 
-/* Estilo do botão Deletar (Ações perigosas em RPG geralmente são vermelhas) */
+
 #deletar {
     border-color: #7c2d12;
     color: #fca5a5;

@@ -1,0 +1,78 @@
+/* Configuração Geral - Fundo estilo Taverna/Fantasia */
+body {
+    background-color: #1a120b; /* Marrom bem escuro */
+    color: #f5ebe0; /* Texto claro, tom de pergaminho */
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container invisível para organizar os botões em linha */
+br {
+    display: none; /* Remove as quebras de linha padrão para alinhar melhor */
+}
+
+/* Botão Principal: Abrir Mochila */
+#gerenciarMochila {
+    background: radial-gradient(circle, #8b5a2b 0%, #4a2c11 100%);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px 40px;
+    margin-bottom: 30px;
+    border: 3px solid #d4af37; /* Borda dourada */
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+#gerenciarMochila:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), inset 0 0 5px rgba(0,0,0,0.2);
+    background: radial-gradient(circle, #a06b3e 0%, #5c3a1a 100%);
+}
+
+/* Botões de Ação (Cadastrar, Consultar, Alterar, Deletar) */
+button:not(#gerenciarMochila) {
+    background-color: #3e2723; /* Marrom madeira */
+    color: #e0a96d; /* Laranja/Dourado apagado */
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+    padding: 12px 24px;
+    margin: 10px;
+    border: 2px solid #6a4f3b;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 140px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+button:not(#gerenciarMochila):hover {
+    background-color: #5d4037;
+    color: #fff;
+    border-color: #d4af37; /* Brilho dourado ao passar o mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Estilo do botão Deletar (Ações perigosas em RPG geralmente são vermelhas) */
+#deletar {
+    border-color: #7c2d12;
+    color: #fca5a5;
+}
+
+#deletar:hover {
+    background-color: #991b1b !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4) !important;
+}

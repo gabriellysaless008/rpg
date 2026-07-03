@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <button type="button" id="gerenciarMochila" onclick="gerenciarMochila()" href="">Gerenciar Mochila</button><br><br>
-    <button type="button" id="cadastrar" >Cadastrar</button>
-    <button type="button" id="consultar" >Consultar</button>
-    <button type="button" id="alterar" >Alterar</button>
-    <button type="button" id="deletar" >Deletar</button>
+
+    <input type="text" id="item" placeholder="Digite o item">
+    <button type="button" id="gerenciarMochila" onclick="gerenciarMochila()" href="">Adicionar Item</button><br><br>
+    <button type="button" id="cadastrar" onclick="cadastrar()">Cadastrar</button>
+    <button type="button" id="consultar" onclick="consultar()">Consultar</button>
+    <button type="button" id="alterar" onclick="alterar()">Alterar</button>
+    <button type="button" id="deletar" onclick="deletar()">Deletar</button>
+
+    <div class="tabela-item">
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Nome do Item</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                <tr><td class="vazio">.</td></tr>
+            </tbody>
+        </table>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

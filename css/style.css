@@ -1,76 +1,137 @@
+Para deixar os botões um ao lado do outro (em linha) e manter o design limpo e centralizado sem alterar o seu HTML original, o segredo é usar o Flexbox no elemento pai (que, no seu caso, é o próprio body da página).
 
+Aqui está o CSS atualizado e ajustado exatamente para a estrutura que você enviou:
+
+CSS
+/* Configuração geral da página */
 body {
-    background-color: #1a120b;
-    color: #f5ebe0;
-    font-family: 'Georgia', serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* Fundo cinza claro da página */
+    color: #333;
     padding: 20px;
+    
+    /* Configuração para alinhar tudo ao centro e deixar os botões lado a lado */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite que os elementos quebrem de linha se a tela for pequena */
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Cria um espaçamento padrão entre os elementos */
+}
+
+/* --- ÁREA DE DESTAQUE DO INPUT --- */
+
+/* Estilização do campo de texto (Input) */
+#inputValue {
+    width: 100%;
+    max-width: 580px;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 16px;
     box-sizing: border-box;
-}
-
-
-br {
-    display: none;
-}
-
-#gerenciarMochila {
-    background: radial-gradient(circle, #8b5a2b 0%, #4a2c11 100%);
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 15px 40px;
-    margin-bottom: 30px;
-    border: 3px solid #d4af37;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
+    
+    /* Força o input a ocupar a linha de cima sozinho */
+    flex-basis: 100%; 
+    margin-bottom: 10px;
+
+    /* Efeito de fundo destacado */
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-#gerenciarMochila:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), inset 0 0 5px rgba(0,0,0,0.2);
-    background: radial-gradient(circle, #a06b3e 0%, #5c3a1a 100%);
+#inputValue:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
 }
 
-button:not(#gerenciarMochila) {
-    background-color: #3e2723;
-    color: #e0a96d;
-    font-size: 1.1rem;
-    font-family: 'Georgia', serif;
-    padding: 12px 24px;
-    margin: 10px;
-    border: 2px solid #6a4f3b;
-    border-radius: 4px;
+/* --- ESTILIZAÇÃO DOS BOTÕES (LADO A LADO) --- */
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    min-width: 140px;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    
+    /* Faz os botões dividirem o espaço harmoniosamente */
+    flex: 1;
+    max-width: 135px; 
+    text-align: center;
 }
 
-button:not(#gerenciarMochila):hover {
-    background-color: #5d4037;
-    color: #fff;
-    border-color: #d4af37;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
+button:active {
+    transform: scale(0.98);
 }
 
+/* Cores específicas dos botões */
+#cadastrar { background-color: #2ecc71; color: white; }
+#cadastrar:hover { background-color: #27ae60; }
 
-#deletar {
-    border-color: #7c2d12;
-    color: #fca5a5;
+#consultar { background-color: #3498db; color: white; }
+#consultar:hover { background-color: #2980b9; }
+
+#alterar { background-color: #f39c12; color: white; }
+#alterar:hover { background-color: #d35400; }
+
+#deletar { background-color: #e74c3c; color: white; }
+#deletar:hover { background-color: #c0392b; }
+
+
+/* --- ÁREA DA TABELA --- */
+
+/* Container da Tabela */
+.tabela-item {
+    /* Força a tabela a ir para a linha de baixo dos botões */
+    flex-basis: 100%; 
+    
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
 }
 
-#deletar:hover {
-    background-color: #991b1b !important;
-    border-color: #ef4444 !important;
-    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4) !important;
+/* Estilização interna da Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 14px 15px;
+}
+
+thead {
+    background-color: #34495e;
+    color: white;
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eeeeee;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #fcfcfc;
+}
+
+.vazio {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 25px;
 }

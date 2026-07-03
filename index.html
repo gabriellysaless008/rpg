@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="container">
+        <div class="controles">
+            <input type="text" id="item" placeholder="Digite o item">
 
-    <input type="text" id="item" placeholder="Digite o item">
-    <button type="button" id="gerenciarMochila" onclick="gerenciarMochila()" href="">Adicionar Item</button><br><br>
-    <button type="button" id="cadastrar" onclick="cadastrar()">Cadastrar</button>
-    <button type="button" id="consultar" onclick="consultar()">Consultar</button>
-    <button type="button" id="alterar" onclick="alterar()">Alterar</button>
-    <button type="button" id="deletar" onclick="deletar()">Deletar</button>
+            <button type="button" id="gerenciarMochila" onclick="gerenciarMochila()">Adicionar Item</button>
+
+            <button type="button" id="cadastrar" onclick="cadastrar()">Cadastrar</button>
+            <button type="button" id="consultar" onclick="consultar()">Consultar</button>
+            <button type="button" id="alterar" onclick="alterar()">Alterar</button>
+            <button type="button" id="deletar" onclick="deletar()">Deletar</button>
+        </div>
 
     <div class="tabela-item">
         <table>
             <thead>
                 <tr>
-                    <th>Identificador</th>
                     <th>Nome do Item</th>
+                    <th>Identificador</th>
                 </tr>
             </thead>
             <tbody id="tabela">
@@ -28,7 +32,7 @@
             </tbody>
         </table>
     </div>
-
+</div>
     <script src="js/script.js"></script>
 </body>
 </html>

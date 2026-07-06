@@ -5,6 +5,7 @@ function gerenciarMochila(){
     console.log(item);
     //alert("item adicionado na mochila!");
     document.getElementById( "tabela" ).innerHTML = item;
+    
 
 
 }
@@ -16,6 +17,14 @@ function cadastrar(){
 }
 
 function consultar(){
+    item = document.getElementById("item").value;
+    busca = prompt("Digite o novo item a ser consultado");
+    if (busca == item){
+        alert("item encontrado");
+    }else{
+        alert("item não encontrado");
+    }
+    document.getElementById( "tabela" ).innerHTML = "";
 
 }
 

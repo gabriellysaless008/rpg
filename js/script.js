@@ -3,15 +3,16 @@ let item;
 function gerenciarMochila(){
     item = document.getElementById("item").value;
     console.log(item);
-    //alert("item adicionado na mochila!");
-    document.getElementById( "tabela" ).innerHTML = item;
-    document.getElementById("item").value = "";
-}
+    
+    tbody = document.getElementById( "tabela" );
+    console.log(tbody);
+    let item_novo = '';
+    item_novo = item_novo + '<tr><td>' + item + '</td></tr>';
 
-function cadastrar(){
-    item = document.getElementById("item").value;
-    document.getElementById( "tabela" ).innerHTML = item;
-    alert("item cadastrado!");
+    console.log(item_novo);
+
+    tbody.innerHTML = tbody.innerHTML + item_novo;
+    //console.log(tabela);
     document.getElementById("item").value = "";
 }
 
@@ -33,7 +34,16 @@ function alterar(){
 }
 
 function deletar(){
+    let deletar;
     document.getElementById("item").value = "";
-    alert("Item deletado!");
+    deletar = prompt("Digite item a ser deletado");
+    //alert("Item deletado!");
     document.getElementById( "tabela" ).innerHTML = "";
 }
+
+// function cadastrar(){
+//     item = document.getElementById("item").value;
+//     document.getElementById( "tabela" ).innerHTML = item;
+//     alert("item cadastrado!");
+//     document.getElementById("item").value = "";
+// }

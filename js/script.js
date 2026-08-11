@@ -1,9 +1,9 @@
 let item = [];
 
-const itemData = {
-        item: valor_item,
-        id: valor_id
-    };
+//const itemData = {
+      //  item: valor_item,
+     //   id: valor_id
+  //  };
 
 function pegaId(){
     for (let x = 0; x <=10; x++){
@@ -14,8 +14,8 @@ function pegaId(){
 function gerenciarMochila(){
     valor_item = document.getElementById("itemInput").value;
     console.log(item);
-    valor_id = document.getElementById("itemInput").id;
-    console.log("id: ", itemData.id);
+    //valor_id = document.getElementById("itemInput").id;
+    //console.log("id: ", itemData.id);
     
     tbody = document.getElementById( "tabela" );
     console.log(tbody);
@@ -32,7 +32,7 @@ function gerenciarMochila(){
 
 function consultar(){
     // Pega o que foi digitado no input
-    busca = document.getElementById("item").value;
+    busca = document.getElementById("itemInput").value;
     
     // Pega a tabela
     tbody = document.getElementById("tabela");
@@ -40,7 +40,7 @@ function consultar(){
     // Verifica se o input está vazio
     if(busca == ""){
         tbody.innerHTML = tbody.innerHTML + '<tr class="erro"><td colspan="2">Digite um item no campo para consultar!</td></tr>';
-        document.getElementById("item").value = "";
+        document.getElementById("itemInput").value = "";
         
         setTimeout(function(){
             removerMensagens();
@@ -83,7 +83,7 @@ function consultar(){
         }, 3000);
     }
     
-    document.getElementById("item").value = "";
+    document.getElementById("itemInput").value = "";
 }
 
 function removerMensagens(){
@@ -97,7 +97,6 @@ function removerMensagens(){
     }
 }
 
-}
 
 function alterar(){
     novo_item = prompt("Digite o novo item a ser alterado");

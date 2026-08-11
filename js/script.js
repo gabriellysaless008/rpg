@@ -1,19 +1,37 @@
 let item = [];
 
-//const itemData = {
-      //  item: valor_item,
-     //   id: valor_id
-  //  };
+let itemData = {
+    item: "",
+    id: 0
+};
 
-function pegaId(){
-    for (let x = 0; x <=10; x++){
-
+function posicaoLivreVetor(){
+    for (let x = 0; x <= item.length; x++){
+        console.log(item[x]);
+        if (item[x] == null){ //verificar se a string
+            console.log("==============ia" + x);
+            return x;
+        }
     }
 }
 
 function gerenciarMochila(){
+
+
+    //capturarValor();
+    //posicaoLivreVetor();
+    //atualizarTabela();
+
     valor_item = document.getElementById("itemInput").value;
     console.log(item);
+    const posicaoVazia = posicaoLivreVetor();
+    console.log("posicao vazia" + posicaoVazia);
+    itemData.item = valor_item;
+    itemData.id = posicaoVazia + 1;
+
+    item.push(itemData);
+
+
     //valor_id = document.getElementById("itemInput").id;
     //console.log("id: ", itemData.id);
     

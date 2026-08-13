@@ -3,20 +3,15 @@ let proximoId = 1;
 
 function adicionarItem() {
     capturaValor();
-
     //const posicaoVazia = posicaoLivreVetor();
     let itemData = {
         item: valor_item,
         id: proximoId
     };
-
     proximoId++;
-
     item.push(itemData);
-
     //item[posicaoVazia] = itemData;
     console.log(item);
-
     atualizarTabela();
 }
 
@@ -33,7 +28,6 @@ function posicaoLivreVetor(){
     console.log("posicao vazia" + posicaoVazia);
     itemData.item = valor_item;
     itemData.id = posicaoVazia + 1;
-
     item.push(itemData);
 }
 
@@ -44,7 +38,6 @@ function capturaValor(){
 
 function atualizarTabela(){
     let tbody = document.getElementById("tabela");
-
     let item_novo = '';
 
     item_novo += '<tr>';
@@ -53,56 +46,25 @@ function atualizarTabela(){
     item_novo += '</tr>';
 
     tbody.innerHTML += item_novo;
-
     document.getElementById("itemInput").value = "";
-
-    // tbody = document.getElementById( "tabela" );
-    // console.log("consegui atualizar a tabela: ", tbody);
-    // let item_novo = '';
-    // item_novo = item_novo + '<tr><td>' + valor_item + '</td></tr>';
-    // console.log(item_novo);
-    // tbody.innerHTML = tbody.innerHTML + item_novo;
-    // //console.log(tabela);
-    // document.getElementById("itemInput").value = "";
-
-
 }
 
 function mochilaCheia(){
-     // Verifica se a mochila está cheia
     if (item.length >= 3) {
-
-        // Remove o primeiro item
         let itemRemovido = item.shift();
-
-        alert(
-            "Mochila cheia! " +
-            itemRemovido.item +
-            " foi descartado para dar lugar a " +
-            valor_item +
-            "."
-        );
-
-        // Adiciona o novo item
+        alert("Mochila cheia! " + itemRemovido.item + " foi descartado para dar lugar a " + valor_item + ".");
         let itemData = {
             item: valor_item,
             id: proximoId
         };
-
         proximoId++;
-
         item.push(itemData);
-
-    } else {
-
-        // Se tiver menos de 3, apenas adiciona
+        }else{
         let itemData = {
             item: valor_item,
             id: proximoId
         };
-
         proximoId++;
-
         item.push(itemData);
     }
 
@@ -110,23 +72,17 @@ function mochilaCheia(){
 }
 
 function gerenciarMochila(){
-    //adicionarItem();
     capturaValor();
     mochilaCheia();
-    //posicaoLivreVetor();
     atualizarTabela();
     //valor_id = document.getElementById("itemInput").id;
     //console.log("id: ", itemData.id);
 }
 
 function consultar(){
-    // Pega o que foi digitado no input
     busca = document.getElementById("itemInput").value;
-    
-    // Pega a tabela
     tbody = document.getElementById("tabela");
     
-    // Verifica se o input está vazio
     if(busca == ""){
         tbody.innerHTML = tbody.innerHTML + '<tr class="erro"><td colspan="2">Digite um item no campo para consultar!</td></tr>';
         document.getElementById("itemInput").value = "";
@@ -186,7 +142,6 @@ function removerMensagens(){
     }
 }
 
-
 function alterar(){
     novo_item = prompt("Digite o novo item a ser alterado");
     document.getElementById( "tabela" ).innerHTML = novo_item;
@@ -200,10 +155,3 @@ function deletar(){
     //alert("Item deletado!");
     document.getElementById( "tabela" ).innerHTML = "";
 }
-
-// function cadastrar(){
-//     item = document.getElementById("item").value;
-//     document.getElementById( "tabela" ).innerHTML = item;
-//     alert("item cadastrado!");
-//     document.getElementById("item").value = "";
-// }

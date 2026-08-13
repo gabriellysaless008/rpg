@@ -1,51 +1,122 @@
 let item = [];
+let proximoId = 1;
 
-let itemData = {
-    item: "",
-    id: 0
-};
+function adicionarItem() {
+    capturaValor();
+
+    //const posicaoVazia = posicaoLivreVetor();
+    let itemData = {
+        item: valor_item,
+        id: proximoId
+    };
+
+    proximoId++;
+
+    item.push(itemData);
+
+    //item[posicaoVazia] = itemData;
+    console.log(item);
+
+    atualizarTabela();
+}
 
 function posicaoLivreVetor(){
     for (let x = 0; x <= item.length; x++){
         console.log(item[x]);
-        if (item[x] == null){ //verificar se a string
-            console.log("==============ia" + x);
+        if (item[x] == null){ 
+            console.log("oi" + x);
             return x;
         }
     }
-}
 
-function gerenciarMochila(){
-
-
-    //capturarValor();
-    //posicaoLivreVetor();
-    //atualizarTabela();
-
-    valor_item = document.getElementById("itemInput").value;
-    console.log(item);
     const posicaoVazia = posicaoLivreVetor();
     console.log("posicao vazia" + posicaoVazia);
     itemData.item = valor_item;
     itemData.id = posicaoVazia + 1;
 
     item.push(itemData);
+}
 
+function capturaValor(){
+    valor_item = document.getElementById("itemInput").value;
+    //console.log("o item digitado foi: ", valor_item);
+}
 
-    //valor_id = document.getElementById("itemInput").id;
-    //console.log("id: ", itemData.id);
-    
-    tbody = document.getElementById( "tabela" );
-    console.log(tbody);
+function atualizarTabela(){
+    let tbody = document.getElementById("tabela");
+
     let item_novo = '';
-    item_novo = item_novo + '<tr><td>' + valor_item + '</td></tr>';
-    
-    console.log(item_novo);
 
-    tbody.innerHTML = tbody.innerHTML + item_novo;
-    //console.log(tabela);
+    item_novo += '<tr>';
+    item_novo += '<td>' + valor_item + '</td>';
+    item_novo += '<td>' + (proximoId - 1) + '</td>';
+    item_novo += '</tr>';
+
+    tbody.innerHTML += item_novo;
+
     document.getElementById("itemInput").value = "";
 
+    // tbody = document.getElementById( "tabela" );
+    // console.log("consegui atualizar a tabela: ", tbody);
+    // let item_novo = '';
+    // item_novo = item_novo + '<tr><td>' + valor_item + '</td></tr>';
+    // console.log(item_novo);
+    // tbody.innerHTML = tbody.innerHTML + item_novo;
+    // //console.log(tabela);
+    // document.getElementById("itemInput").value = "";
+
+
+}
+
+function mochilaCheia(){
+     // Verifica se a mochila está cheia
+    if (item.length >= 3) {
+
+        // Remove o primeiro item
+        let itemRemovido = item.shift();
+
+        alert(
+            "Mochila cheia! " +
+            itemRemovido.item +
+            " foi descartado para dar lugar a " +
+            valor_item +
+            "."
+        );
+
+        // Adiciona o novo item
+        let itemData = {
+            item: valor_item,
+            id: proximoId
+        };
+
+        proximoId++;
+
+        item.push(itemData);
+
+    } else {
+
+        // Se tiver menos de 3, apenas adiciona
+        let itemData = {
+            item: valor_item,
+            id: proximoId
+        };
+
+        proximoId++;
+
+        item.push(itemData);
+    }
+
+    console.log(item);
+}
+
+function gerenciarMochila(){
+    //adicionarItem();
+    capturaValor();
+    mochilaCheia();
+    //posicaoLivreVetor();
+    atualizarTabela();
+    //valor_id = document.getElementById("itemInput").id;
+    //console.log("id: ", itemData.id);
 }
 
 function consultar(){

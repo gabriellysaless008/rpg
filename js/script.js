@@ -88,34 +88,26 @@ function consultar(){
     if(busca == ""){
         tbody.innerHTML = tbody.innerHTML + '<tr class="erro"><td colspan="2">Digite um item no campo para consultar!</td></tr>';
         document.getElementById("itemInput").value = "";
-        
         setTimeout(function(){
             removerMensagens();
         }, 3000);
-        
         return;
     }
     
     linha = tbody.getElementsByTagName("tr");
-    
     for(i = 0; i < linha.length; i++){
         linha[i].className = "";
     }
-    
-    // Procura o item na tabela
     achei = 0;
     for(i = 0; i < linha.length; i++){
         celula = linha[i].getElementsByTagName("td")[0];
-        
         if(celula.innerHTML == busca){
             linha[i].className = "destaque";
             achei = 1;
             tbody.innerHTML = tbody.innerHTML + '<tr class="mensagem"><td colspan="2">Item "' + busca + '" encontrado e destacado na tabela!</td></tr>';
-            
             setTimeout(function(){
                 removerMensagens();
             }, 3000);
-            
             break;
         }
     }
@@ -126,7 +118,6 @@ function consultar(){
             removerMensagens();
         }, 3000);
     }
-    
     document.getElementById("itemInput").value = "";
     document.getElementById("idInput").value = "";
 }
@@ -134,7 +125,6 @@ function consultar(){
 function removerMensagens(){
     tbody = document.getElementById("tabela");
     linha = tbody.getElementsByTagName("tr");
-    
     for(i = linha.length - 1; i >= 0; i--){
         if(linha[i].className == "mensagem" || linha[i].className == "erro"){
             linha[i].remove();
@@ -148,31 +138,25 @@ function alterar() {
 
     if (id === 0 || isNaN(id)) {
         tbody.innerHTML += '<tr class="erro"><td colspan="2">Digite um ID para alterar!</td></tr>';
-
         setTimeout(function() {
             removerMensagens();
         }, 3000);
-
         return;
     }
 
     if (novoNome == "") {
         tbody.innerHTML += '<tr class="erro"><td colspan="2">Digite o novo nome do item!</td></tr>';
-
         setTimeout(function() {
             removerMensagens();
         }, 3000);
-
         return;
     }
 
     let encontrado = item.find(function(objeto) {
         return objeto.id === id;
     });
-
     if (!encontrado) {
         tbody.innerHTML += '<tr class="erro"><td colspan="2">ID "' + id + '" não encontrado!</td></tr>';
-
         setTimeout(function() {
             removerMensagens();
         }, 3000);
@@ -181,17 +165,12 @@ function alterar() {
     }
 
     let nomeAntigo = encontrado.item;
-
     encontrado.item = novoNome;
-
     atualizarTabela();
-
     tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + nomeAntigo + '" alterado para "' + novoNome + '" com sucesso!</td></tr>';
-
     setTimeout(function() {
         removerMensagens();
     }, 3000);
-
     document.getElementById("idInput").value = "";
     document.getElementById("itemInput").value = "";
 }
@@ -199,39 +178,27 @@ function alterar() {
 function deletar() {
     let id = Number(document.getElementById("idInput").value);
     let tbody = document.getElementById("tabela");
-
     if (id === 0 || isNaN(id)) {
         tbody.innerHTML += '<tr class="erro"><td colspan="2">Digite um ID para deletar!</td></tr>';
-
         setTimeout(function() {
             removerMensagens();
         }, 3000);
-
         return;
     }
-
     let indice = item.findIndex(function(objeto) {
         return objeto.id === id;
     });
-
     if (indice === -1) {
         tbody.innerHTML += '<tr class="erro"><td colspan="2">ID "' + id + '" não encontrado!</td></tr>';
-
         setTimeout(function() {
             removerMensagens();
         }, 3000);
-
         return;
     }
-
     let itemRemovido = item[indice].item;
-
     item.splice(indice, 1);
-
     atualizarTabela();
-
     tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + itemRemovido + '" foi deletado com sucesso!</td></tr>';
-
     setTimeout(function() {
         removerMensagens();
     }, 3000);

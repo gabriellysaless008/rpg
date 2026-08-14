@@ -38,14 +38,28 @@ function capturaValor(){
 
 function atualizarTabela(){
     let tbody = document.getElementById("tabela");
-    let item_novo = '';
 
-    item_novo += '<tr>';
-    item_novo += '<td>' + valor_item + '</td>';
-    item_novo += '<td>' + (proximoId - 1) + '</td>';
-    item_novo += '</tr>';
+    tbody.innerHTML = "";
 
-    tbody.innerHTML += item_novo;
+    for (let i = 0; i < item.length; i++) {
+        tbody.innerHTML += `
+            <tr>
+                <td>${item[i].item}</td>
+                <td>${item[i].id}</td>
+            </tr>
+        `;
+    }
+
+    document.getElementById("itemInput").value = "";
+    // let tbody = document.getElementById("tabela");
+    // let item_novo = '';
+
+    // item_novo += '<tr>';
+    // item_novo += '<td>' + valor_item + '</td>';
+    // item_novo += '<td>' + (proximoId - 1) + '</td>';
+    // item_novo += '</tr>';
+
+    // tbody.innerHTML += item_novo;
     document.getElementById("itemInput").value = "";
 }
 
@@ -143,15 +157,55 @@ function removerMensagens(){
 }
 
 function alterar(){
-    novo_item = prompt("Digite o novo item a ser alterado");
-    document.getElementById( "tabela" ).innerHTML = novo_item;
-    document.getElementById("item").value = "";
+    let id = Number(document.getElementById("idInput").value);
+    let novoNome = document.getElementById("itemInput").value;
+
+    let encontrado = item.find(function(objeto) {
+        return objeto.id === id;
+    });
+
+    if (!encontrado) {
+        alert("ID não encontrado!");
+        return;
+    }
+
+    if (novoNome === "") {
+        alert("Digite o novo nome do item!");
+        return;
+    }
+
+    encontrado.item = novoNome;
+
+    atualizarTabela();
+
+    document.getElementById("idInput").value = "";
+    document.getElementById("itemInput").value = "";
+
+    alert("Item alterado com sucesso!");
+
+    //console.log ("consegui pegar o id: ",id + " ,"+ idInput);
+    // novo_item = prompt("Digite o novo item a ser alterado");
+    // document.getElementById( "tabela" ).innerHTML = novo_item;
+    // document.getElementById("item").value = "";
 }
 
 function deletar(){
-    let deletar;
-    document.getElementById("itemInput").value = "";
-    deletar = prompt("Digite item a ser deletado");
-    //alert("Item deletado!");
-    document.getElementById( "tabela" ).innerHTML = "";
+    let id = Number(document.getElementById("idInput").value);
+
+    let indice = item.findIndex(function(objeto) {
+        return objeto.id === id;
+    });
+
+    if (indice === -1) {
+        alert("ID não encontrado!");
+        return;
+    }
+
+    item.splice(indice, 1);
+
+    atualizarTabela();
+
+    document.getElementById("idInput").value = "";
+
+    alert("Item deletado com sucesso!");
 }

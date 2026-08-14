@@ -1,6 +1,12 @@
 let item = [];
 let proximoId = 1;
 
+function gerenciarMochila(){
+    capturaValor();
+    mochilaCheia();
+    atualizarTabela();
+}
+
 function adicionarItem() {
     capturaValor();
     //const posicaoVazia = posicaoLivreVetor();
@@ -51,16 +57,6 @@ function atualizarTabela(){
     }
 
     document.getElementById("itemInput").value = "";
-    // let tbody = document.getElementById("tabela");
-    // let item_novo = '';
-
-    // item_novo += '<tr>';
-    // item_novo += '<td>' + valor_item + '</td>';
-    // item_novo += '<td>' + (proximoId - 1) + '</td>';
-    // item_novo += '</tr>';
-
-    // tbody.innerHTML += item_novo;
-    document.getElementById("itemInput").value = "";
 }
 
 function mochilaCheia(){
@@ -85,14 +81,6 @@ function mochilaCheia(){
     console.log(item);
 }
 
-function gerenciarMochila(){
-    capturaValor();
-    mochilaCheia();
-    atualizarTabela();
-    //valor_id = document.getElementById("itemInput").id;
-    //console.log("id: ", itemData.id);
-}
-
 function consultar(){
     busca = document.getElementById("itemInput").value;
     tbody = document.getElementById("tabela");
@@ -108,10 +96,8 @@ function consultar(){
         return;
     }
     
-    // Pega todas as linhas
     linha = tbody.getElementsByTagName("tr");
     
-    // Remove destaque antigo de todas as linhas
     for(i = 0; i < linha.length; i++){
         linha[i].className = "";
     }
@@ -136,13 +122,13 @@ function consultar(){
     
     if(achei == 0){
         tbody.innerHTML = tbody.innerHTML + '<tr class="erro"><td colspan="2">Item "' + busca + '" não encontrado</td></tr>';
-        
         setTimeout(function(){
             removerMensagens();
         }, 3000);
     }
     
     document.getElementById("itemInput").value = "";
+    document.getElementById("idInput").value = "";
 }
 
 function removerMensagens(){
@@ -155,57 +141,151 @@ function removerMensagens(){
         }
     }
 }
-
-function alterar(){
+function alterar() {
     let id = Number(document.getElementById("idInput").value);
     let novoNome = document.getElementById("itemInput").value;
+    let tbody = document.getElementById("tabela");
+
+    if (id === 0 || isNaN(id)) {
+        tbody.innerHTML += '<tr class="erro"><td colspan="2">Digite um ID para alterar!</td></tr>';
+
+        setTimeout(function() {
+            removerMensagens();
+        }, 3000);
+
+        return;
+    }
+
+    if (novoNome == "") {
+        tbody.innerHTML += '<tr class="erro"><td colspan="2">Digite o novo nome do item!</td></tr>';
+
+        setTimeout(function() {
+            removerMensagens();
+        }, 3000);
+
+        return;
+    }
 
     let encontrado = item.find(function(objeto) {
         return objeto.id === id;
     });
 
     if (!encontrado) {
-        alert("ID não encontrado!");
+        tbody.innerHTML += '<tr class="erro"><td colspan="2">ID "' + id + '" não encontrado!</td></tr>';
+
+        setTimeout(function() {
+            removerMensagens();
+        }, 3000);
+
         return;
     }
 
-    if (novoNome === "") {
-        alert("Digite o novo nome do item!");
-        return;
-    }
+    let nomeAntigo = encontrado.item;
 
     encontrado.item = novoNome;
 
     atualizarTabela();
 
+    tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + nomeAntigo + '" alterado para "' + novoNome + '" com sucesso!</td></tr>';
+
+    setTimeout(function() {
+        removerMensagens();
+    }, 3000);
+
     document.getElementById("idInput").value = "";
     document.getElementById("itemInput").value = "";
-
-    alert("Item alterado com sucesso!");
-
-    //console.log ("consegui pegar o id: ",id + " ,"+ idInput);
-    // novo_item = prompt("Digite o novo item a ser alterado");
-    // document.getElementById( "tabela" ).innerHTML = novo_item;
-    // document.getElementById("item").value = "";
 }
 
-function deletar(){
+function deletar() {
     let id = Number(document.getElementById("idInput").value);
+    let tbody = document.getElementById("tabela");
+
+    if (id === 0 || isNaN(id)) {
+        tbody.innerHTML += '<tr class="erro"><td colspan="2">Digite um ID para deletar!</td></tr>';
+
+        setTimeout(function() {
+            removerMensagens();
+        }, 3000);
+
+        return;
+    }
 
     let indice = item.findIndex(function(objeto) {
         return objeto.id === id;
     });
 
     if (indice === -1) {
-        alert("ID não encontrado!");
+        tbody.innerHTML += '<tr class="erro"><td colspan="2">ID "' + id + '" não encontrado!</td></tr>';
+
+        setTimeout(function() {
+            removerMensagens();
+        }, 3000);
+
         return;
     }
+
+    let itemRemovido = item[indice].item;
 
     item.splice(indice, 1);
 
     atualizarTabela();
 
-    document.getElementById("idInput").value = "";
+    tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + itemRemovido + '" foi deletado com sucesso!</td></tr>';
 
-    alert("Item deletado com sucesso!");
+    setTimeout(function() {
+        removerMensagens();
+    }, 3000);
+
+    document.getElementById("idInput").value = "";
+    document.getElementById("itemInput").value = "";
 }
+
+// function alterar(){
+//     let id = Number(document.getElementById("idInput").value);
+//     let novoNome = document.getElementById("itemInput").value;
+
+//     let encontrado = item.find(function(objeto) {
+//         return objeto.id === id;
+//     });
+
+//     if (!encontrado) {
+//         alert("ID não encontrado!");
+//         return;
+//     }
+
+//     if (novoNome === "") {
+//         alert("Digite o novo nome do item!");
+//         return;
+//     }
+
+//     encontrado.item = novoNome;
+
+//     atualizarTabela();
+
+//     document.getElementById("idInput").value = "";
+//     document.getElementById("itemInput").value = "";
+
+//     alert("Item alterado com sucesso!");
+// }
+
+
+// function deletar(){
+//     let id = Number(document.getElementById("idInput").value);
+
+//     let indice = item.findIndex(function(objeto) {
+//         return objeto.id === id;
+//     });
+
+//     if (indice === -1) {
+//         alert("ID não encontrado!");
+//         return;
+//     }
+
+//     item.splice(indice, 1);
+
+//     atualizarTabela();
+
+//     document.getElementById("idInput").value = "";
+
+//     alert("Item deletado com sucesso!");
+// }

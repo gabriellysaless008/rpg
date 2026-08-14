@@ -14,6 +14,7 @@ body {
     padding: 20px;
 }
 
+/* CONTAINER PRINCIPAL */
 .container {
     width: 900px;
     max-width: 100%;
@@ -31,16 +32,36 @@ body {
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* CABEÇALHO */
+.cabecalho {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.cabecalho h1 {
+    color: #495057;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.cabecalho p {
+    color: #868e96;
+    font-size: 15px;
+}
+
+
+/* ÁREA DOS CONTROLES */
 .controles {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 18px;
     align-items: center;
     margin-bottom: 30px;
     padding: 20px;
@@ -49,9 +70,32 @@ body {
     border: 2px solid #e9ecef;
 }
 
-input {
+
+/* CAMPOS */
+.campos {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.campo {
     flex: 1;
-    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6c757d;
+    padding-left: 4px;
+}
+
+
+/* INPUTS */
+input {
+    width: 100%;
     padding: 14px 20px;
     border: 2px solid #dee2e6;
     border-radius: 12px;
@@ -71,6 +115,19 @@ input:focus {
 input::placeholder {
     color: #adb5bd;
     font-style: italic;
+}
+
+
+/* BOTÕES */
+.botoes {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.botoes button {
+    flex: 1;
 }
 
 button {
@@ -95,7 +152,12 @@ button::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
     transition: left 0.5s;
 }
 
@@ -107,6 +169,8 @@ button:active {
     transform: scale(0.95);
 }
 
+
+/* BOTÃO ADICIONAR */
 #gerenciarMochila {
     background: linear-gradient(135deg, #a8c0ff, #c3e8ff);
     color: #2c3e50;
@@ -117,6 +181,8 @@ button:active {
     box-shadow: 0 8px 25px rgba(168, 192, 255, 0.4);
 }
 
+
+/* BOTÃO CONSULTAR */
 #consultar {
     background: linear-gradient(135deg, #b8e1fc, #d4f1f9);
     color: #2c3e50;
@@ -127,6 +193,8 @@ button:active {
     box-shadow: 0 8px 25px rgba(184, 225, 252, 0.4);
 }
 
+
+/* BOTÃO ALTERAR */
 #alterar {
     background: linear-gradient(135deg, #b5e8d5, #d4f5e9);
     color: #2c3e50;
@@ -137,6 +205,8 @@ button:active {
     box-shadow: 0 8px 25px rgba(181, 232, 213, 0.4);
 }
 
+
+/* BOTÃO DELETAR */
 #deletar {
     background: linear-gradient(135deg, #fccbcd, #fce4e4);
     color: #2c3e50;
@@ -147,6 +217,8 @@ button:active {
     box-shadow: 0 8px 25px rgba(252, 203, 205, 0.4);
 }
 
+
+/* TABELA */
 .tabela-item {
     background: white;
     border-radius: 18px;
@@ -202,6 +274,8 @@ tbody tr:nth-child(even):hover td {
     background-color: #f1f3f5;
 }
 
+
+/* TABELA VAZIA */
 .vazio {
     color: #adb5bd;
     font-style: italic;
@@ -210,7 +284,8 @@ tbody tr:nth-child(even):hover td {
     font-size: 16px;
 }
 
-/* Destaque da linha consultada */
+
+/* DESTAQUE DA LINHA CONSULTADA */
 .destaque td {
     background: linear-gradient(135deg, #fff3cd, #ffe69c) !important;
     border-left: 6px solid #ffc107;
@@ -220,11 +295,17 @@ tbody tr:nth-child(even):hover td {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
 }
 
-/* Mensagens na tabela */
+
+/* MENSAGENS NA TABELA */
 .mensagem td {
     background: linear-gradient(135deg, #d4edda, #c3e6cb) !important;
     border-left: 6px solid #28a745;
@@ -233,6 +314,8 @@ tbody tr:nth-child(even):hover td {
     animation: slideIn 0.5s ease-out;
 }
 
+
+/* ERROS */
 .erro td {
     background: linear-gradient(135deg, #f8d7da, #f5c6cb) !important;
     border-left: 6px solid #dc3545;
@@ -241,76 +324,121 @@ tbody tr:nth-child(even):hover td {
     animation: shake 0.5s ease-in-out;
 }
 
+
+/* ANIMAÇÃO DAS MENSAGENS */
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateX(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
+
+/* ANIMAÇÃO DOS ERROS */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
 }
 
-/* Responsividade */
+
+/* RESPONSIVIDADE - TABLET / CELULAR */
 @media (max-width: 768px) {
+
     .container {
         padding: 20px;
     }
-    
+
+    .cabecalho h1 {
+        font-size: 25px;
+    }
+
     .controles {
         padding: 15px;
         flex-direction: column;
     }
-    
+
+    .campos {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .campo {
+        width: 100%;
+    }
+
     input {
-        min-width: 100%;
         width: 100%;
     }
-    
-    button {
-        width: 100%;
-        justify-content: center;
+
+    .botoes {
+        flex-direction: column;
+        gap: 10px;
     }
-    
-    th, td {
+
+    .botoes button {
+        width: 100%;
+    }
+
+    th,
+    td {
         padding: 12px 15px;
         font-size: 14px;
     }
-    
+
     .container {
         border-radius: 15px;
     }
 }
 
+
+/* RESPONSIVIDADE - CELULAR PEQUENO */
 @media (max-width: 480px) {
+
     .container {
         padding: 15px;
     }
-    
+
+    .cabecalho h1 {
+        font-size: 22px;
+    }
+
+    .cabecalho p {
+        font-size: 13px;
+    }
+
     .controles {
         padding: 12px;
         gap: 8px;
     }
-    
+
     button {
         padding: 12px 20px;
         font-size: 12px;
     }
-    
-    th, td {
+
+    th,
+    td {
         padding: 10px 12px;
         font-size: 12px;
     }
 }
 
-/* Scrollbar personalizada */
+
+/* SCROLLBAR PERSONALIZADA */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -330,7 +458,8 @@ tbody tr:nth-child(even):hover td {
     background: linear-gradient(135deg, #c3e8ff, #a8c0ff);
 }
 
-/* Tooltip para botões */
+
+/* TOOLTIP PARA BOTÕES */
 button[title] {
     position: relative;
 }
@@ -351,7 +480,8 @@ button[title]:hover::after {
     z-index: 1000;
 }
 
-/* Estilo para linhas vazias */
+
+/* ESTILO PARA LINHAS VAZIAS */
 tbody tr:only-child td {
     text-align: center;
     padding: 40px 20px;

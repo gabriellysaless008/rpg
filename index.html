@@ -8,32 +8,70 @@
 </head>
 <body>
     <div class="container">
-        <div class="controles">
-            <input type="text" id="itemInput" placeholder="Digite o item">
-            <input type="number" id="idInput" placeholder="Digite o ID">
 
-            <button type="button" id="gerenciarMochila" onclick="gerenciarMochila()">Adicionar Item</button>
+    <div class="cabecalho">
+        <h1>Inventário do Herói</h1>
+    </div>
 
-            <!--<button type="button" id="cadastrar" onclick="cadastrar()">Cadastrar</button>-->
-            <button type="button" id="consultar" onclick="consultar()">Consultar</button>
-            <button type="button" id="alterar" onclick="alterar()">Alterar</button>
-            <button type="button" id="deletar" onclick="deletar()">Deletar</button>
+    <div class="controles">
+
+        <div class="campos">
+            <div class="campo">
+                <label for="itemInput">Nome do Item</label>
+                <input type="text" id="itemInput" placeholder="Digite o item">
+            </div>
+
+            <div class="campo">
+                <label for="idInput">Identificador</label>
+                <input type="number" id="idInput" placeholder="Digite o ID">
+            </div>
+
+            
         </div>
 
+        <div class="botoes">
+            <button type="button" id="gerenciarMochila" onclick="gerenciarMochila()">
+                Adicionar Item
+            </button>
+
+            <button type="button" id="consultar" onclick="consultar()">
+                Consultar
+            </button>
+
+            <button type="button" id="alterar" onclick="alterar()">
+                Alterar
+            </button>
+
+            <button type="button" id="deletar" onclick="deletar()">
+                Deletar
+            </button>
+        </div>
+
+    </div>
+
     <div class="tabela-item">
+
         <table>
             <thead>
                 <tr>
-                    <th>Nome do Item</th>
                     <th>Identificador</th>
+                    <th>Nome do Item</th>
                 </tr>
             </thead>
+
             <tbody id="tabela">
-                <tr><td class="vazio"></td></tr>
+                <tr>
+                    <td colspan="2" class="vazio">
+                        Nenhum item cadastrado na mochila.
+                    </td>
+                </tr>
             </tbody>
         </table>
+
     </div>
+
 </div>
+ </div>
     <script src="js/script.js"></script>
 </body>
 </html> 

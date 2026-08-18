@@ -117,7 +117,7 @@ function consultar(){
         }
     }
 
-    tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + encontrado.item + '" encontrado e destacado na tabela!</td></tr>';
+    tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + encontrado.item + '" encontrado e destacado na mochila!</td></tr>';
 
     setTimeout(function() {
         removerMensagens();
@@ -190,9 +190,17 @@ function deletar() {
     atualizarTabela();
     tbody.innerHTML += '<tr class="mensagem"><td colspan="2">Item "' + itemRemovido + '" foi deletado com sucesso!</td></tr>';
     setTimeout(function() {
-        removerMensagens();
+    removerMensagens();
     }, 3000);
 
     document.getElementById("idInput").value = "";
     document.getElementById("itemInput").value = "";
+}
+
+function removerMensagens(){
+    let mensagens = document.querySelectorAll(".mensagem, .erro");
+
+   for (let i = 0; i < mensagens.length; i++) {
+        mensagens[i].remove();
+    }
 }

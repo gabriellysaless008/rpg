@@ -43,7 +43,6 @@ function atualizarTabela(){
 }
 
 function mochilaCheia(){
-    //console.log(capturaValor());
     let tbody = document.getElementById("tabela");
     if (item.length >= 3) {
         let itemRemovido = item.shift();

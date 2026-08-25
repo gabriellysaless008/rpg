@@ -20,25 +20,8 @@ function adicionarItem() {
     console.log(item);
     atualizarTabela(); 
 }
-
-function posicaoLivreVetor(){
-    for (let x = 0; x <= item.length; x++){
-        console.log(item[x]);
-        if (item[x] == null){ 
-            console.log("oi" + x);
-            return x;
-        }
-    }
-
-    const posicaoVazia = posicaoLivreVetor();
-    console.log("posicao vazia" + posicaoVazia);
-    itemData.item = valor_item;
-    itemData.id = posicaoVazia + 1;
-    item.push(itemData);
-}
-
 function capturaValor(){
-    valor_item = document.getElementById("itemInput").value;
+    return valor_item = document.getElementById("itemInput").value;
     //console.log("o item digitado foi: ", valor_item);
 }
 
@@ -60,19 +43,20 @@ function atualizarTabela(){
 }
 
 function mochilaCheia(){
+    //console.log(capturaValor());
     let tbody = document.getElementById("tabela");
     if (item.length >= 3) {
         let itemRemovido = item.shift();
-        alert("Mochila cheia! " + itemRemovido.item + " foi descartado para dar lugar a " + valor_item + ".");
+        alert("Mochila cheia! " + itemRemovido.item + " foi descartado para dar lugar a " + capturaValor() + ".");
         let itemData = {
-            item: valor_item,
+            item: capturaValor(),
             id: proximoId
         };
         proximoId++;
         item.push(itemData);
         }else{
         let itemData = {
-            item: valor_item,
+            item: capturaValor(),
             id: proximoId
         };
         proximoId++;

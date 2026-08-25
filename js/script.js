@@ -18,7 +18,7 @@ function adicionarItem() {
     item.push(itemData);
     //item[posicaoVazia] = itemData;
     console.log(item);
-    atualizarTabela();
+    atualizarTabela(); 
 }
 
 function posicaoLivreVetor(){
@@ -50,8 +50,8 @@ function atualizarTabela(){
     for (let i = 0; i < item.length; i++) {
         tbody.innerHTML += `
             <tr>
-                <td>${item[i].item}</td>
                 <td>${item[i].id}</td>
+                <td>${item[i].item}</td>
             </tr>
         `;
     }
@@ -60,6 +60,7 @@ function atualizarTabela(){
 }
 
 function mochilaCheia(){
+    let tbody = document.getElementById("tabela");
     if (item.length >= 3) {
         let itemRemovido = item.shift();
         alert("Mochila cheia! " + itemRemovido.item + " foi descartado para dar lugar a " + valor_item + ".");
